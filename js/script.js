@@ -1,4 +1,4 @@
-console.log('Lets write JavaScript');
+
 let currentSong = new Audio();
 let songs;
 let currFolder;
@@ -157,7 +157,11 @@ const playMusic = (track, pause = false) => {
         console.error("No track provided to playMusic function");
         return;
     }
-    
+     // Stop the currently playing song
+    if (currentSong) {
+        currentSong.pause();
+        currentSong.src = "";
+    }
     // Skip navigation elements
     if (['~', '..', '.', 'songs'].includes(track) || track === currFolder.split('/').pop()) {
         console.warn(`Skipping invalid track: ${track}`);
